@@ -4,10 +4,14 @@ PREFIX ?= /usr/local
 CMDS = json install package term
 
 install: uninstall
+	cd ./lib/term && make install
+	cp ./lib/json/JSON.sh $(PREFIX)/bin/JSON.sh
 	install $(BIN) $(PREFIX)/bin
 	for cmd in $(CMDS); do cp $(BIN)-$${cmd} $(PREFIX)/bin; done
 
 uninstall:
+	cd ./lib/term && make uninstall
+	rm -f $(PREFIX)/bin/JSON.sh
 	rm -f $(PREFIX)/bin/$(BIN)
 	for cmd in $(CMDS); do rm -f $(PREFIX)/bin/$(BIN)-$${cmd}; done
 
