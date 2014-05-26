@@ -14,3 +14,7 @@ $ make install
 ```
 $ bpkg --help
 ```
+
+### License
+
+MIT
